@@ -17,7 +17,7 @@ THREE.Fire = function (fireTex, color) {
   fireTex.magFilter = fireTex.minFilter = THREE.LinearFilter;
   fireTex.wrapS = fireTex.wrapT = THREE.ClampToEdgeWrapping;
   fireMaterial.uniforms.fireTex.value = fireTex;
-  fireMaterial.uniforms.color.value = color || new THREE.Color(0xeeeeee);
+  fireMaterial.uniforms.color.value = color || new THREE.Color().setRGB(234, 255, 0);
   fireMaterial.uniforms.invModelMatrix.value = new THREE.Matrix4();
   fireMaterial.uniforms.scale.value = new THREE.Vector3(1, 1, 1);
   fireMaterial.uniforms.seed.value = Math.random() * 19.19;

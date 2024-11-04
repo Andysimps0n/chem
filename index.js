@@ -28,7 +28,7 @@
         0.001,
         1000
       ));
-      camera.position.z = 2;
+      camera.position.z = 1;
       scene.add(camera);
 
       var renderer = new THREE.WebGLRenderer({
@@ -37,7 +37,7 @@
       });
 
       renderer.setClearColor(0x000000);
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(window.innerWidth/2.5, window.innerHeight/2.5);
       $dom.append(renderer.domElement);
 
       var fireTex = THREE.ImageUtils.loadTexture(
@@ -45,11 +45,11 @@
       );
 
       var wireframeMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color(0xffffff),
+        color: new THREE.Color().setRGB(234, 255, 0),
         wireframe: true
       });
 
-      var fire = new THREE.Fire(fireTex, new THREE.Color(0xff0000));
+      var fire = new THREE.Fire(fireTex, new THREE.Color().setRGB(234, 255, 0));
 
       var wireframe = new THREE.Mesh(fire.geometry, wireframeMat.clone());
       fire.add(wireframe);
@@ -121,7 +121,6 @@
         requestAnimationFrame(loop);
 
         var delta = clock.getDelta();
-        trackballControls.update(delta);
 
         var t = clock.elapsedTime * controller.speed;
         fire.update(t);
